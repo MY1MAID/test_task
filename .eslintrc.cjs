@@ -1,25 +1,30 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: 'module',
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
   },
   settings: {
     react: {
-      version: 'detect',
+      version: "detect",
     },
   },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
   ],
+  plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
-    // Ваши кастомные правила
-    'react/prop-types': 'off', // Отключаем, если используете TypeScript для проверки типов
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
   },
+  ignorePatterns: ["node_modules/", "dist/"],
 };
