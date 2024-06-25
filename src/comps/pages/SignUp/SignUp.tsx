@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import Index from "../../ui/Input";
+import Input from "../../ui/Input/Input";
 import { IFormSignUp } from "./SignUpProps";
-import { registerUser } from "../../../shared/api/authApi/authApi";
 import { schema } from "./SignUpValidation";
 import style from "../../ui/authStyle/index.module.scss";
-import Button from "../../ui/Button";
+import Button from "../../ui/Button/Button";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {registerUser} from "../../../store/features/auth/authSlice";
 
 const SignUp: FC = () => {
   const {
@@ -21,8 +21,8 @@ const SignUp: FC = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const loading = useAppSelector((state) => state.auth.loading);
-  const error = useAppSelector((state) => state.auth.error);
+  const loading = useAppSelector((state: any) => state.auth.loading);
+  const error = useAppSelector((state: any) => state.auth.error);
 
   const onSubmit: SubmitHandler<IFormSignUp> = async (data) => {
     const resultAction = await dispatch(registerUser(data));
@@ -35,28 +35,28 @@ const SignUp: FC = () => {
     <div className={style.container}>
       <form className={style.form_container} onSubmit={handleSubmit(onSubmit)}>
         <h2>Регистрация</h2>
-        <Index
+        <Input
           type="text"
           label="Имя"
           placeholder="Артур"
           register={register("name")}
           error={errors.name?.message}
         />
-        <Index
+        <Input
           type="text"
           label="Электронная почта"
           placeholder="example@mail.ru"
           register={register("email")}
           error={errors.email?.message}
         />
-        <Index
+        <Input
           type="password"
           label="Пароль"
           placeholder="******"
           register={register("password")}
           error={errors.password?.message}
         />
-        <Index
+        <Input
           type="password"
           label="Подтвердите пароль"
           placeholder="******"

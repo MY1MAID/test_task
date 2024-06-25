@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../../shared/api/authApi/authApi";
-import Index from "../../ui/Input";
+import Input from "../../ui/Input/Input";
 import { IFormSignIn } from "./SignInProps";
 import { schema } from "./SignInValidatin";
-import Button from "../../ui/Button";
+import Button from "../../ui/Button/Button";
 import style from "../../ui/authStyle/index.module.scss";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {loginUser} from "../../../store/features/auth/authSlice";
 
 const SignUp: FC = () => {
   const {
@@ -21,8 +21,8 @@ const SignUp: FC = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const loading = useAppSelector((state) => state.auth.loading);
-  const error = useAppSelector((state) => state.auth.error);
+  const loading = useAppSelector((state: any) => state.auth.loading);
+  const error = useAppSelector((state: any) => state.auth.error);
 
   const onSubmit: SubmitHandler<IFormSignIn> = async (data) => {
     const resultAction = await dispatch(loginUser(data));
@@ -35,14 +35,14 @@ const SignUp: FC = () => {
     <div className={style.container}>
       <form className={style.form_container} onSubmit={handleSubmit(onSubmit)}>
         <h2>Авторизация</h2>
-        <Index
+        <Input
           type="text"
           label="Электронная почта"
           placeholder="example@mail.ru"
           register={register("email")}
           error={errors.email?.message}
         />
-        <Index
+        <Input
           type="password"
           label="Пароль"
           placeholder="******"

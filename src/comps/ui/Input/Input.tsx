@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { InputProps } from "./InputProps";
 import style from "./Input.module.scss";
 
-const Index: FC<InputProps> = ({
+const Input: FC<InputProps> = ({
   label,
   type,
   register,
@@ -56,4 +56,4 @@ const Index: FC<InputProps> = ({
     </div>
   );
 };
-export default Index;
+export default Input;
