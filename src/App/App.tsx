@@ -12,7 +12,7 @@ import SignIn from "../comps/pages/SignIn/SignIn";
 const App = () => {
   return (
     <>
-      <Router>
+      <Router basename="/test_task">
         <Routes>
           <Route path="/" element={<Navigate to="/signin" />} />
           <Route path="signup" element={<SignUp />} />

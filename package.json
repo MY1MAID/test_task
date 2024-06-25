@@ -9,7 +9,8 @@
     "lint": "eslint \"src/**\" --fix",
     "format": "prettier --write \"src/**\"",
     "type-check": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -44,5 +45,6 @@
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
     "vite": "^5.3.1"
-  }
+  },
+  "homepage": "https://github.com/MY1MAID/test_task"
 }
