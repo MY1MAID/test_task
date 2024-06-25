@@ -2,6 +2,10 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchUserById } from "../../../shared/api/userApi/userApi";
+import Index from "../../ui/LogoutButton";
+import style from "../../ui/userStyles/index.module.scss";
+import BackButton from "../../ui/BackButton/BackButton";
+import UserInfo from "../../ui/UserInfo";
 
 const User: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,15 +28,26 @@ const User: FC = () => {
   return (
     <>
       {user && (
-        <div>
-          <h2>User Details</h2>
-          <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
-          <p>
-            Name: {user.first_name} {user.last_name}
-          </p>
-          <p>Email: {user.email}</p>
-          <p>{user.description}</p>
-        </div>
+        <>
+          <header>
+            <Index />
+            <BackButton />
+            <div className={style.profile_header}>
+              <img
+                className={style.user_icon}
+                src={user.avatar}
+                alt={`${user.first_name} ${user.last_name}`}
+              />
+              <div>
+                <h1>
+                  {user.first_name} {user.last_name}
+                </h1>
+                <p>Партнер</p>
+              </div>
+            </div>
+          </header>
+          <UserInfo />
+        </>
       )}
     </>
   );

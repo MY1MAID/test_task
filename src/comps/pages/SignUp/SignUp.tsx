@@ -2,11 +2,13 @@ import React, { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { useNavigate } from "react-router-dom";
-import Input from "../../ui/Input/Input";
+import { Link, useNavigate } from "react-router-dom";
+import Index from "../../ui/Input";
 import { IFormSignUp } from "./SignUpProps";
 import { registerUser } from "../../../shared/api/authApi/authApi";
 import { schema } from "./SignUpValidation";
+import style from "../../ui/authStyle/index.module.scss";
+import Button from "../../ui/Button";
 
 const SignUp: FC = () => {
   const {
@@ -22,10 +24,6 @@ const SignUp: FC = () => {
   const loading = useAppSelector((state) => state.auth.loading);
   const error = useAppSelector((state) => state.auth.error);
 
-  const handleNavigateToLogin = () => {
-    navigate('/signin')
-  }
-
   const onSubmit: SubmitHandler<IFormSignUp> = async (data) => {
     const resultAction = await dispatch(registerUser(data));
     if (registerUser.fulfilled.match(resultAction)) {
@@ -34,39 +32,44 @@ const SignUp: FC = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-            type="text"
-            label="Name"
-            register={register("name")}
-            error={errors.name?.message}
+    <div className={style.container}>
+      <form className={style.form_container} onSubmit={handleSubmit(onSubmit)}>
+        <h2>Регистрация</h2>
+        <Index
+          type="text"
+          label="Имя"
+          placeholder="Артур"
+          register={register("name")}
+          error={errors.name?.message}
         />
-        <Input
-            type="text"
-            label="Email"
-            register={register("email")}
-            error={errors.email?.message}
+        <Index
+          type="text"
+          label="Электронная почта"
+          placeholder="example@mail.ru"
+          register={register("email")}
+          error={errors.email?.message}
         />
-        <Input
-            type="password"
-            label="Password"
-            register={register("password")}
-            error={errors.password?.message}
+        <Index
+          type="password"
+          label="Пароль"
+          placeholder="******"
+          register={register("password")}
+          error={errors.password?.message}
         />
-        <Input
-            type="password"
-            label="Confirm Password"
-            register={register("confirmPassword")}
-            error={errors.confirmPassword?.message}
+        <Index
+          type="password"
+          label="Подтвердите пароль"
+          placeholder="******"
+          register={register("confirmPassword")}
+          error={errors.confirmPassword?.message}
         />
-
-        <button type="submit" disabled={loading}>
-          Register
-        </button>
-        <button onClick={handleNavigateToLogin}> У меня есть аккаунт</button>
-        {error && <p>{error}</p>}
+        <Button type="submit" disabled={loading}>
+          Зарегистрироваться
+        </Button>
+        <div className={style.error_auth}>
+          <Link to="/signin"> У меня есть аккаунт</Link>
+          {error && <p className={style.errorMessage}>{error}</p>}
+        </div>
       </form>
     </div>
   );
