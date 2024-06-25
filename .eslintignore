@@ -1,0 +1,10 @@
+# Build outputs
+dist/
+build/
+
+# Node modules
+node_modules/
+
+# Configuration files
+vite.config.ts
+webpack.config.js
