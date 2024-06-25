@@ -1,18 +1,19 @@
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchUserById } from "../../../shared/api/userApi/userApi";
-import Index from "../../ui/LogoutButton";
+import LogoutButton from "../../ui/LogoutButton/LogoutButton";
 import style from "../../ui/userStyles/index.module.scss";
 import BackButton from "../../ui/BackButton/BackButton";
-import UserInfo from "../../ui/UserInfo";
+import UserInfo from "../../ui/UserInfo/UserInfo";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {fetchUserById} from "../../../store/features/user/userSlice";
 
 const User: FC = () => {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.user.user);
-  const loading = useAppSelector((state) => state.user.loading);
-  const error = useAppSelector((state) => state.user.error);
-  const { userId } = useParams();
+  const user = useAppSelector((state: any) => state.user.user);
+  const loading = useAppSelector((state: any) => state.user.loading);
+  const error = useAppSelector((state: any) => state.user.error);
+  const { userId } = useParams<{ userId: string }>();
+
 
   useEffect(() => {
     if (!user && userId) {
@@ -30,7 +31,7 @@ const User: FC = () => {
       {user && (
         <>
           <header>
-            <Index />
+            <LogoutButton />
             <BackButton />
             <div className={style.profile_header}>
               <img

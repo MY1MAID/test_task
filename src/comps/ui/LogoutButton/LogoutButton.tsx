@@ -1,8 +1,8 @@
 import style from "../userStyles/index.module.scss";
-import { logout } from "../../../store/features/auth/authSlice";
-import { useAppDispatch } from "../../../store/hooks";
+import {useAppDispatch} from "../../../store/hooks";
+import {logout} from "../../../store/features/auth/authSlice";
 
-const Index = () => {
+const LogoutButton = () => {
   const dispatch = useAppDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -28,4 +28,4 @@ const Index = () => {
     </button>
   );
 };
-export default Index;
+export default LogoutButton;

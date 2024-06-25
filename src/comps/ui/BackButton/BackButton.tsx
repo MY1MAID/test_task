@@ -1,5 +1,4 @@
 import style from "../userStyles/index.module.scss";
-import { useAppDispatch } from "../../../store/hooks";
 import { useNavigate } from "react-router-dom";
 
 const BackButton = () => {
