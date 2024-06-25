@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/test_task/',
   css: {
     postcss: {
       plugins: [autoprefixer()],
