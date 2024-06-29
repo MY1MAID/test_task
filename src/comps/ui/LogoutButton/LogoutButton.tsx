@@ -1,6 +1,6 @@
 import style from "../userStyles/index.module.scss";
-import {useAppDispatch} from "../../../store/hooks";
-import {logout} from "../../../store/features/auth/authSlice";
+import { useAppDispatch } from "../../../store/hooks";
+import { logout } from "../../../store/features/auth/authSlice";
 
 const LogoutButton = () => {
   const dispatch = useAppDispatch();

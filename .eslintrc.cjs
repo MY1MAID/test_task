@@ -23,7 +23,12 @@ module.exports = {
   rules: {
     "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "react/react-in-jsx-scope": "off",
   },
   ignorePatterns: ["node_modules/", "dist/"],

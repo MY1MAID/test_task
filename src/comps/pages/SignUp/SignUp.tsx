@@ -7,8 +7,8 @@ import { IFormSignUp } from "./SignUpProps";
 import { schema } from "./SignUpValidation";
 import style from "../../ui/authStyle/index.module.scss";
 import Button from "../../ui/Button/Button";
-import {useAppDispatch, useAppSelector} from "../../../store/hooks";
-import {registerUser} from "../../../store/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { registerUser } from "../../../store/features/auth/authSlice";
 
 const SignUp: FC = () => {
   const {
@@ -21,8 +21,8 @@ const SignUp: FC = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const loading = useAppSelector((state: any) => state.auth.loading);
-  const error = useAppSelector((state: any) => state.auth.error);
+  const loading = useAppSelector((state) => state.auth.loading);
+  const error = useAppSelector((state) => state.auth.error);
 
   const onSubmit: SubmitHandler<IFormSignUp> = async (data) => {
     const resultAction = await dispatch(registerUser(data));

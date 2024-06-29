@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import autoprefixer from "autoprefixer";
-import { fileURLToPath, URL } from 'url';
+import { fileURLToPath, URL } from "url";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/test_task/',
+  base: "/test_task/",
   css: {
     postcss: {
       plugins: [autoprefixer()],
@@ -16,8 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src/', import.meta.url)),
-    }
+      "@": fileURLToPath(new URL("./src/", import.meta.url)),
+    },
   },
-
 });

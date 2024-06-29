@@ -1,9 +1,9 @@
 import { FC } from "react";
 import style from "./UserInfo.module.scss";
-import {useAppSelector} from "../../../store/hooks";
+import { useAppSelector } from "../../../store/hooks";
 
 const UserInfo: FC = () => {
-  const user = useAppSelector((state: any) => state.user.user);
+  const user = useAppSelector((state) => state.user.user);
   return (
     <>
       {user && (

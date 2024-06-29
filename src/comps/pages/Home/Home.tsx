@@ -1,16 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import style from "../../ui/userStyles/index.module.scss";
-import {useAppDispatch, useAppSelector} from "../../../store/hooks";
-import {fetchUserById, fetchUsers} from "../../../store/features/user/userSlice";
-import {logout} from "../../../store/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import {
+  fetchUserById,
+  fetchUsers,
+} from "../../../store/features/user/userSlice";
+import { logout } from "../../../store/features/auth/authSlice";
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state: any) => state.user.users);
-  const pagination = useAppSelector((state: any) => state.user.pagination);
-  const loading = useAppSelector((state: any) => state.user.loading);
-  const error = useAppSelector((state: any) => state.user.error);
+  const users = useAppSelector((state) => state.user.users);
+  const pagination = useAppSelector((state) => state.user.pagination);
+  const loading = useAppSelector((state) => state.user.loading);
+  const error = useAppSelector((state) => state.user.error);
   const navigate = useNavigate();
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -73,7 +76,7 @@ const Home: FC = () => {
       </header>
       <main className={style.main}>
         <ul className={style.user_container}>
-          {users.map((user: any) => (
+          {users.map((user) => (
             <li
               className={style.user}
               key={user.id}
